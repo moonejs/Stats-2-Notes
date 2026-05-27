@@ -1,348 +1,446 @@
-@use "./variables.scss" as *;
-/* ===================================================
-   Stats Notes - Custom Theme
-   Soft, warm, personal tutoring website
-   Place this file at: quartz/styles/custom.scss
-   =================================================== */
+/* ==========================================================
+   Moon Tuition Classes — Catppuccin Anuppuccin Theme
+   Rosé Pine Light / Frappe Dark  |  Teal Accent
+   ========================================================== */
 
-/* Fonts are loaded via quartz/static/head.html — see SETUP-GUIDE */
+/* ── FONTS via head.html — do not @import here ── */
 
-/* ── Color Palette ── */
-:root {
-  --pastel-pink: #f9c6d0;
-  --pastel-peach: #fde8d8;
-  --pastel-yellow: #fef3c7;
-  --pastel-mint: #d1fae5;
-  --pastel-lavender: #ede9fe;
-  --pastel-blue: #dbeafe;
-  --accent-rose: #e87a8c;
-  --accent-teal: #2dd4bf;
-  --soft-shadow: 0 4px 20px rgba(232, 122, 140, 0.12);
-}
-
-/* ── Base Font Override ── */
-body {
-  font-family: 'Nunito', sans-serif !important;
-  letter-spacing: 0.01em;
-}
-
-h1, h2, h3, h4 {
-  font-family: 'Lora', serif !important;
-  font-weight: 600;
-}
-
-/* ── Light Mode ── */
+/* ── LIGHT MODE: Catppuccin Rosé Pine ── */
 :root[saved-theme="light"],
 :root:not([saved-theme="dark"]) {
-  --light: #fffaf8;
-  --lightgray: #fdeef2;
-  --gray: #c9a8b2;
-  --darkgray: #5c4a52;
-  --dark: #3a2a30;
-  --secondary: #e87a8c;
-  --tertiary: #2dd4bf;
-  --highlight: rgba(249, 198, 208, 0.25);
+  --light:     #faf4ed;
+  --lightgray: #f2e9de;
+  --gray:      #9893a5;
+  --darkgray:  #575279;
+  --dark:      #286983;
+  --secondary: #1A7DA4;
+  --tertiary:  #56949f;
+  --highlight: rgba(86, 148, 159, 0.13);
+
+  /* anuppuccin accent extras */
+  --ctp-teal:     #1A7DA4;
+  --ctp-peach:    #DD7F67;
+  --ctp-subtext1: #EE653A;
+  --ctp-subtext0: #0C9FCE;
+  --ctp-overlay2: #525252;
+  --ctp-overlay1: #CCCCCC;
+  --ctp-overlay0: #0C9FCE;
+
+  /* H1–H6 color cycle */
+  --h1-color: #1A7DA4;
+  --h2-color: #56949f;
+  --h3-color: #286983;
+  --h4-color: #907aa9;
+  --h5-color: #d7827e;
+  --h6-color: #b4637a;
+
+  /* Card surface */
+  --card-bg:     #fffaf3;
+  --card-border: #e8ddd0;
+  --card-shadow: 0 2px 16px rgba(40, 105, 131, 0.10), 0 1px 4px rgba(40, 105, 131, 0.07);
+
+  /* Rainbow folder colors */
+  --rf1: #1A7DA4; --rf2: #d7827e; --rf3: #286983;
+  --rf4: #907aa9; --rf5: #56949f; --rf6: #b4637a;
 }
 
-/* ── Dark Mode ── */
+/* ── DARK MODE: Catppuccin Frappé ── */
 :root[saved-theme="dark"] {
-  --light: #1e1520;
-  --lightgray: #2d1f28;
-  --gray: #6b5060;
-  --darkgray: #e8d5da;
-  --dark: #f7eef0;
-  --secondary: #f4a0ae;
-  --tertiary: #5ee6d6;
-  --highlight: rgba(244, 160, 174, 0.15);
+  --light:     #303446;
+  --lightgray: #414559;
+  --gray:      #737994;
+  --darkgray:  #c6d0f5;
+  --dark:      #e8e9f5;
+  --secondary: #11B7C5;
+  --tertiary:  #81c8be;
+  --highlight: rgba(17, 183, 197, 0.13);
+
+  --ctp-teal:     #11B7C5;
+  --ctp-peach:    #ef9f76;
+  --ctp-subtext1: #FB35D8;
+  --ctp-subtext0: #0AD1D0;
+  --ctp-overlay2: #0AD1D0;
+  --ctp-overlay1: #FFA600;
+  --ctp-overlay0: #4CFFD2;
+
+  --h1-color: #11B7C5;
+  --h2-color: #81c8be;
+  --h3-color: #a6d189;
+  --h4-color: #ca9ee6;
+  --h5-color: #ef9f76;
+  --h6-color: #f4b8e4;
+
+  --card-bg:     #292c3c;
+  --card-border: #414559;
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.35), 0 1px 4px rgba(0,0,0,0.2);
+
+  --rf1: #11B7C5; --rf2: #ef9f76; --rf3: #a6d189;
+  --rf4: #ca9ee6; --rf5: #81c8be; --rf6: #f4b8e4;
 }
 
-/* ── Page Layout ── */
-#quartz-body {
-  background: var(--light);
+/* ── BASE ── */
+* {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.15s ease;
 }
 
-/* ── Top Header / Site Title ── */
-.page-header {
-  .page-title {
-    font-family: 'Lora', serif !important;
-    font-size: 1.6rem;
-    font-weight: 600;
-
-    a {
-      background: linear-gradient(135deg, var(--accent-rose), #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-decoration: none !important;
-    }
-  }
+body {
+  font-family: 'Nunito', 'Segoe UI', sans-serif !important;
+  letter-spacing: 0.01em;
+  background: var(--light) !important;
 }
 
-/* ── Main Article Content ── */
-article {
-  background: var(--light);
-  border-radius: 16px;
-  padding: 2rem 2.5rem;
-  box-shadow: var(--soft-shadow);
-  border: 1px solid var(--lightgray);
+/* ── CARD LAYOUT — everything is a card ── */
+#quartz-body .center {
+  padding: 1.5rem 0;
+}
 
-  /* Article headings with cute left accent */
-  h1 {
-    font-size: 2rem;
-    color: var(--dark);
-    padding-bottom: 0.5rem;
-    border-bottom: 3px solid var(--pastel-pink);
-    margin-bottom: 1.5rem;
-  }
+article.popover-hint {
+  background: var(--card-bg) !important;
+  border: 1.5px solid var(--card-border) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--card-shadow) !important;
+  padding: 2rem 2.5rem !important;
+  margin-bottom: 1.5rem;
+}
 
-  h2 {
-    font-size: 1.4rem;
-    color: var(--secondary);
-    margin-top: 2rem;
-    padding-left: 0.75rem;
-    border-left: 4px solid var(--pastel-pink);
-  }
+/* ── HEADINGS — colored, sized per anuppuccin config ── */
+article h1 {
+  font-family: 'Lora', 'New York', Georgia, serif !important;
+  font-weight: 900 !important;
+  font-size: 2.2rem !important;
+  line-height: 1.2 !important;
+  color: var(--h1-color) !important;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--h1-color) !important;
+  margin-bottom: 1.5rem !important;
+}
 
-  h3 {
-    font-size: 1.15rem;
-    color: var(--darkgray);
-    padding-left: 0.5rem;
-    border-left: 3px solid var(--pastel-lavender);
-    margin-top: 1.5rem;
-  }
+article h2 {
+  font-family: 'Lora', serif !important;
+  font-weight: 100 !important;
+  font-size: 1.9rem !important;
+  color: var(--h2-color) !important;
+  margin-top: 2rem !important;
+  padding-left: 0.85rem;
+  border-left: 4px solid var(--h2-color) !important;
+  border-radius: 0 !important;
+}
 
-  /* Paragraph spacing */
-  p {
-    line-height: 1.85;
-    color: var(--darkgray);
-  }
+article h3 {
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.6rem !important;
+  color: var(--h3-color) !important;
+  margin-top: 1.5rem !important;
+}
 
-  /* Nice blockquotes */
-  blockquote {
-    background: var(--pastel-peach);
-    border-left: 4px solid var(--accent-rose);
-    border-radius: 0 12px 12px 0;
-    padding: 1rem 1.5rem;
-    margin: 1.5rem 0;
-    color: var(--dark);
-    font-style: italic;
-  }
+article h4 {
+  font-weight: 700 !important;
+  font-size: 1.2rem !important;
+  color: var(--h4-color) !important;
+}
 
-  /* Code blocks */
-  pre {
-    background: var(--lightgray) !important;
-    border-radius: 12px;
-    border: 1px solid var(--gray);
-  }
+article h5 {
+  font-weight: 700 !important;
+  color: var(--h5-color) !important;
+}
 
-  /* Inline code */
-  code {
-    background: var(--pastel-lavender);
-    border-radius: 6px;
-    padding: 0.1em 0.4em;
-    font-size: 0.88em;
-    color: var(--secondary);
-  }
+article h6 {
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  color: var(--h6-color) !important;
+}
 
-  /* Links */
-  a {
-    color: var(--secondary);
-    text-decoration: underline;
-    text-decoration-color: var(--pastel-pink);
-    text-underline-offset: 3px;
-    transition: color 0.2s ease;
+/* ── PARAGRAPH & LINKS ── */
+article p {
+  line-height: 1.9;
+  color: var(--darkgray);
+}
 
-    &:hover {
-      color: var(--accent-rose);
-      text-decoration-color: var(--accent-rose);
-    }
-  }
+article a {
+  color: var(--secondary) !important;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease;
 
-  /* Horizontal rule */
-  hr {
-    border: none;
-    height: 2px;
-    background: linear-gradient(90deg, var(--pastel-pink), var(--pastel-lavender), transparent);
-    margin: 2rem 0;
-  }
-
-  /* Tables */
-  table {
-    border-collapse: separate;
-    border-spacing: 0;
-    width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--soft-shadow);
-
-    thead tr {
-      background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-lavender));
-
-      th {
-        padding: 0.75rem 1rem;
-        font-family: 'Nunito', sans-serif;
-        font-weight: 700;
-        color: var(--dark);
-      }
-    }
-
-    tbody tr {
-      transition: background 0.15s ease;
-
-      &:hover {
-        background: var(--pastel-peach);
-      }
-
-      td {
-        padding: 0.65rem 1rem;
-        border-bottom: 1px solid var(--lightgray);
-      }
-    }
+  &:hover {
+    text-decoration-color: var(--secondary);
   }
 }
 
-/* ── PDF Embed Styling ── */
-/* Makes PDF iframes look polished */
-.pdf-embed-wrapper {
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: var(--soft-shadow);
-  border: 1px solid var(--lightgray);
-  margin: 1.5rem 0;
+/* ── BLOCKQUOTE / SPEECH BUBBLE style ── */
+article blockquote {
+  position: relative;
+  background: var(--highlight);
+  border-left: 4px solid var(--secondary) !important;
+  border-radius: 0 12px 12px 0 !important;
+  padding: 1rem 1.25rem 1rem 1.5rem !important;
+  margin: 1.5rem 0 !important;
+  color: var(--darkgray);
+  font-style: italic;
+}
 
-  iframe {
-    display: block;
-    width: 100%;
-    border: none;
+/* ── CALLOUTS — sleek colored style ── */
+.callout {
+  border-radius: 12px !important;
+  border-width: 0 0 0 4px !important;
+  border-style: solid !important;
+  padding: 0.9rem 1.2rem !important;
+  margin: 1.25rem 0 !important;
+  backdrop-filter: blur(0);
+}
+
+.callout[data-callout="note"],
+.callout[data-callout="info"] {
+  background: color-mix(in srgb, var(--secondary) 10%, transparent) !important;
+  border-color: var(--secondary) !important;
+  .callout-title { color: var(--secondary) !important; }
+}
+
+.callout[data-callout="tip"],
+.callout[data-callout="hint"] {
+  background: color-mix(in srgb, var(--h3-color) 10%, transparent) !important;
+  border-color: var(--h3-color) !important;
+  .callout-title { color: var(--h3-color) !important; }
+}
+
+.callout[data-callout="warning"],
+.callout[data-callout="caution"] {
+  background: color-mix(in srgb, var(--ctp-peach) 12%, transparent) !important;
+  border-color: var(--ctp-peach) !important;
+  .callout-title { color: var(--ctp-peach) !important; }
+}
+
+.callout[data-callout="important"],
+.callout[data-callout="summary"],
+.callout[data-callout="abstract"] {
+  background: color-mix(in srgb, var(--h4-color) 10%, transparent) !important;
+  border-color: var(--h4-color) !important;
+  .callout-title { color: var(--h4-color) !important; }
+}
+
+.callout-title {
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase !important;
+}
+
+/* ── TAGS — 2px radius per config ── */
+.tag-link,
+a.tag,
+li.tag-element a {
+  background: color-mix(in srgb, var(--secondary) 12%, transparent) !important;
+  color: var(--secondary) !important;
+  border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent) !important;
+  border-radius: 2px !important;
+  padding: 0.15em 0.55em !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: background 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    background: color-mix(in srgb, var(--secondary) 22%, transparent) !important;
   }
 }
 
-/* When PDFs are embedded directly as iframes in markdown */
+/* ── CODE ── */
+article pre {
+  background: var(--lightgray) !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: 12px !important;
+  padding: 1.1rem 1.4rem !important;
+}
+
+article code {
+  background: color-mix(in srgb, var(--secondary) 10%, transparent) !important;
+  color: var(--secondary) !important;
+  border-radius: 4px !important;
+  padding: 0.1em 0.38em !important;
+  font-size: 0.87em !important;
+}
+
+/* ── TABLES ── */
+article table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: var(--card-shadow) !important;
+  width: 100%;
+  border: 1.5px solid var(--card-border) !important;
+}
+
+article table thead tr {
+  background: color-mix(in srgb, var(--secondary) 15%, var(--card-bg)) !important;
+
+  th {
+    padding: 0.7rem 1rem !important;
+    font-weight: 700 !important;
+    color: var(--secondary) !important;
+    font-size: 0.88rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+  }
+}
+
+article table tbody tr {
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: var(--highlight) !important;
+  }
+
+  td {
+    padding: 0.6rem 1rem !important;
+    border-bottom: 1px solid var(--card-border) !important;
+    color: var(--darkgray) !important;
+  }
+}
+
+/* ── HR ── */
+article hr {
+  border: none !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, var(--secondary), var(--tertiary), transparent) !important;
+  margin: 2rem 0 !important;
+  opacity: 0.5;
+}
+
+/* ── PDF IFRAMES ── */
 article iframe {
-  border-radius: 12px;
-  border: 1px solid var(--lightgray);
-  box-shadow: var(--soft-shadow);
-  max-width: 100%;
+  border-radius: 12px !important;
+  border: 1.5px solid var(--card-border) !important;
+  box-shadow: var(--card-shadow) !important;
+  max-width: 100% !important;
+  display: block;
+  margin: 1.25rem 0;
 }
 
-/* ── Sidebar / Explorer ── */
-.sidebar {
-  .explorer-title {
-    font-family: 'Lora', serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--secondary);
-  }
+/* ── SIDEBAR — CARD style ── */
+.left.sidebar {
+  background: var(--card-bg);
+  border-right: 1.5px solid var(--card-border);
+  padding: 1.25rem 1rem !important;
+}
 
-  .folder-outer > .folder-li > .folder-entry {
-    border-radius: 8px;
-    transition: background 0.15s ease;
+/* Site title */
+#quartz-body .page-title a,
+#quartz-body h1.page-title a {
+  font-family: 'Lora', serif !important;
+  font-weight: 700 !important;
+  background: linear-gradient(135deg, var(--secondary), var(--tertiary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none !important;
+  font-size: 1.25rem !important;
+}
 
-    &:hover {
-      background: var(--pastel-peach);
-    }
+/* ── EXPLORER / RAINBOW FOLDERS ── */
+.explorer-title {
+  font-weight: 700 !important;
+  color: var(--secondary) !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* Rainbow folder colors */
+.folder-outer:nth-child(6n+1) > .folder-li > .folder-entry { color: var(--rf1) !important; }
+.folder-outer:nth-child(6n+2) > .folder-li > .folder-entry { color: var(--rf2) !important; }
+.folder-outer:nth-child(6n+3) > .folder-li > .folder-entry { color: var(--rf3) !important; }
+.folder-outer:nth-child(6n+4) > .folder-li > .folder-entry { color: var(--rf4) !important; }
+.folder-outer:nth-child(6n+5) > .folder-li > .folder-entry { color: var(--rf5) !important; }
+.folder-outer:nth-child(6n+6) > .folder-li > .folder-entry { color: var(--rf6) !important; }
+
+/* Explorer hover */
+.folder-entry,
+.file > a {
+  border-radius: 8px !important;
+  padding: 0.2rem 0.5rem !important;
+  transition: background 0.15s ease !important;
+
+  &:hover {
+    background: var(--highlight) !important;
   }
 }
 
-/* ── Search Box ── */
-#search-bar {
-  border-radius: 25px !important;
-  border: 2px solid var(--lightgray) !important;
-  padding: 0.5rem 1rem 0.5rem 2.5rem !important;
-  transition: border-color 0.2s ease;
-  background: var(--light);
+/* ── SEARCH ── */
+#search-bar,
+input[type="text"].search-bar {
+  border-radius: 20px !important;
+  border: 1.5px solid var(--card-border) !important;
+  background: var(--card-bg) !important;
+  color: var(--darkgray) !important;
+  padding: 0.45rem 1rem 0.45rem 2.2rem !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
   &:focus {
     border-color: var(--secondary) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--secondary) 18%, transparent) !important;
     outline: none !important;
-    box-shadow: 0 0 0 3px rgba(232, 122, 140, 0.15) !important;
   }
 }
 
-/* ── Tags ── */
-.tag-link, a.tag {
-  background: var(--pastel-lavender);
-  color: #7c3aed;
-  border-radius: 20px;
-  padding: 0.2em 0.7em;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.2s ease;
-
-  &:hover {
-    background: var(--pastel-pink);
-    color: var(--accent-rose);
-  }
-}
-
-/* ── Callout Boxes (Obsidian style) ── */
-.callout {
-  border-radius: 12px;
-  border: none !important;
-  padding: 1rem 1.25rem;
-  margin: 1.25rem 0;
-
-  &[data-callout="note"] {
-    background: var(--pastel-blue);
-    .callout-title { color: #1d4ed8; }
-  }
-
-  &[data-callout="tip"], &[data-callout="hint"] {
-    background: var(--pastel-mint);
-    .callout-title { color: #047857; }
-  }
-
-  &[data-callout="warning"], &[data-callout="caution"] {
-    background: var(--pastel-yellow);
-    .callout-title { color: #92400e; }
-  }
-
-  &[data-callout="important"], &[data-callout="info"] {
-    background: var(--pastel-lavender);
-    .callout-title { color: #5b21b6; }
-  }
-
-  .callout-title {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-bottom: 0.5rem;
-  }
-}
-
-/* ── Footer ── */
-footer {
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--gray);
-  padding: 1.5rem;
-  border-top: 2px dashed var(--lightgray);
-  margin-top: 3rem;
-
-  a {
-    color: var(--secondary);
-  }
-}
-
-/* ── Breadcrumbs ── */
+/* ── BREADCRUMBS ── */
 .breadcrumb-element {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--gray);
 
   &:last-child {
-    color: var(--secondary);
-    font-weight: 600;
+    color: var(--secondary) !important;
+    font-weight: 700;
   }
 }
 
-/* ── Mobile tweaks ── */
+/* ── GRAPH VIEW — teal nodes ── */
+.graph-outer {
+  border-radius: 16px !important;
+  border: 1.5px solid var(--card-border) !important;
+  overflow: hidden;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 2px dashed var(--card-border) !important;
+  color: var(--gray) !important;
+  font-size: 0.82rem !important;
+  padding: 1.5rem !important;
+  text-align: center;
+
+  a { color: var(--secondary) !important; }
+}
+
+/* ── SCROLLBAR — thin teal ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  border-radius: 10px;
+  &:hover { background: var(--secondary); }
+}
+
+/* ── POPOVER CARDS ── */
+.popover {
+  border-radius: 14px !important;
+  border: 1.5px solid var(--card-border) !important;
+  box-shadow: var(--card-shadow) !important;
+  background: var(--card-bg) !important;
+}
+
+/* ── DATE / META ── */
+.content-meta {
+  color: var(--gray) !important;
+  font-size: 0.82rem !important;
+}
+
+/* ── MOBILE ── */
 @media (max-width: 768px) {
-  article {
-    padding: 1.25rem;
-    border-radius: 12px;
+  article.popover-hint {
+    padding: 1.25rem !important;
+    border-radius: 12px !important;
   }
 }
