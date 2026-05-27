@@ -1,3 +1,350 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+/* ===================================================
+   Stats Notes - Custom Theme
+   Soft, warm, personal tutoring website
+   Place this file at: quartz/styles/custom.scss
+   =================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* ── Color Palette ── */
+:root {
+  --pastel-pink: #f9c6d0;
+  --pastel-peach: #fde8d8;
+  --pastel-yellow: #fef3c7;
+  --pastel-mint: #d1fae5;
+  --pastel-lavender: #ede9fe;
+  --pastel-blue: #dbeafe;
+  --accent-rose: #e87a8c;
+  --accent-teal: #2dd4bf;
+  --soft-shadow: 0 4px 20px rgba(232, 122, 140, 0.12);
+}
+
+/* ── Base Font Override ── */
+body {
+  font-family: 'Nunito', sans-serif !important;
+  letter-spacing: 0.01em;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Lora', serif !important;
+  font-weight: 600;
+}
+
+/* ── Light Mode ── */
+:root[saved-theme="light"],
+:root:not([saved-theme="dark"]) {
+  --light: #fffaf8;
+  --lightgray: #fdeef2;
+  --gray: #c9a8b2;
+  --darkgray: #5c4a52;
+  --dark: #3a2a30;
+  --secondary: #e87a8c;
+  --tertiary: #2dd4bf;
+  --highlight: rgba(249, 198, 208, 0.25);
+}
+
+/* ── Dark Mode ── */
+:root[saved-theme="dark"] {
+  --light: #1e1520;
+  --lightgray: #2d1f28;
+  --gray: #6b5060;
+  --darkgray: #e8d5da;
+  --dark: #f7eef0;
+  --secondary: #f4a0ae;
+  --tertiary: #5ee6d6;
+  --highlight: rgba(244, 160, 174, 0.15);
+}
+
+/* ── Page Layout ── */
+#quartz-body {
+  background: var(--light);
+}
+
+/* ── Top Header / Site Title ── */
+.page-header {
+  .page-title {
+    font-family: 'Lora', serif !important;
+    font-size: 1.6rem;
+    font-weight: 600;
+
+    a {
+      background: linear-gradient(135deg, var(--accent-rose), #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none !important;
+    }
+  }
+}
+
+/* ── Main Article Content ── */
+article {
+  background: var(--light);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  box-shadow: var(--soft-shadow);
+  border: 1px solid var(--lightgray);
+
+  /* Article headings with cute left accent */
+  h1 {
+    font-size: 2rem;
+    color: var(--dark);
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--pastel-pink);
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    color: var(--secondary);
+    margin-top: 2rem;
+    padding-left: 0.75rem;
+    border-left: 4px solid var(--pastel-pink);
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    color: var(--darkgray);
+    padding-left: 0.5rem;
+    border-left: 3px solid var(--pastel-lavender);
+    margin-top: 1.5rem;
+  }
+
+  /* Paragraph spacing */
+  p {
+    line-height: 1.85;
+    color: var(--darkgray);
+  }
+
+  /* Nice blockquotes */
+  blockquote {
+    background: var(--pastel-peach);
+    border-left: 4px solid var(--accent-rose);
+    border-radius: 0 12px 12px 0;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    color: var(--dark);
+    font-style: italic;
+  }
+
+  /* Code blocks */
+  pre {
+    background: var(--lightgray) !important;
+    border-radius: 12px;
+    border: 1px solid var(--gray);
+  }
+
+  /* Inline code */
+  code {
+    background: var(--pastel-lavender);
+    border-radius: 6px;
+    padding: 0.1em 0.4em;
+    font-size: 0.88em;
+    color: var(--secondary);
+  }
+
+  /* Links */
+  a {
+    color: var(--secondary);
+    text-decoration: underline;
+    text-decoration-color: var(--pastel-pink);
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--accent-rose);
+      text-decoration-color: var(--accent-rose);
+    }
+  }
+
+  /* Horizontal rule */
+  hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, var(--pastel-pink), var(--pastel-lavender), transparent);
+    margin: 2rem 0;
+  }
+
+  /* Tables */
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--soft-shadow);
+
+    thead tr {
+      background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-lavender));
+
+      th {
+        padding: 0.75rem 1rem;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        color: var(--dark);
+      }
+    }
+
+    tbody tr {
+      transition: background 0.15s ease;
+
+      &:hover {
+        background: var(--pastel-peach);
+      }
+
+      td {
+        padding: 0.65rem 1rem;
+        border-bottom: 1px solid var(--lightgray);
+      }
+    }
+  }
+}
+
+/* ── PDF Embed Styling ── */
+/* Makes PDF iframes look polished */
+.pdf-embed-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--soft-shadow);
+  border: 1px solid var(--lightgray);
+  margin: 1.5rem 0;
+
+  iframe {
+    display: block;
+    width: 100%;
+    border: none;
+  }
+}
+
+/* When PDFs are embedded directly as iframes in markdown */
+article iframe {
+  border-radius: 12px;
+  border: 1px solid var(--lightgray);
+  box-shadow: var(--soft-shadow);
+  max-width: 100%;
+}
+
+/* ── Sidebar / Explorer ── */
+.sidebar {
+  .explorer-title {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--secondary);
+  }
+
+  .folder-outer > .folder-li > .folder-entry {
+    border-radius: 8px;
+    transition: background 0.15s ease;
+
+    &:hover {
+      background: var(--pastel-peach);
+    }
+  }
+}
+
+/* ── Search Box ── */
+#search-bar {
+  border-radius: 25px !important;
+  border: 2px solid var(--lightgray) !important;
+  padding: 0.5rem 1rem 0.5rem 2.5rem !important;
+  transition: border-color 0.2s ease;
+  background: var(--light);
+
+  &:focus {
+    border-color: var(--secondary) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(232, 122, 140, 0.15) !important;
+  }
+}
+
+/* ── Tags ── */
+.tag-link, a.tag {
+  background: var(--pastel-lavender);
+  color: #7c3aed;
+  border-radius: 20px;
+  padding: 0.2em 0.7em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: var(--pastel-pink);
+    color: var(--accent-rose);
+  }
+}
+
+/* ── Callout Boxes (Obsidian style) ── */
+.callout {
+  border-radius: 12px;
+  border: none !important;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+
+  &[data-callout="note"] {
+    background: var(--pastel-blue);
+    .callout-title { color: #1d4ed8; }
+  }
+
+  &[data-callout="tip"], &[data-callout="hint"] {
+    background: var(--pastel-mint);
+    .callout-title { color: #047857; }
+  }
+
+  &[data-callout="warning"], &[data-callout="caution"] {
+    background: var(--pastel-yellow);
+    .callout-title { color: #92400e; }
+  }
+
+  &[data-callout="important"], &[data-callout="info"] {
+    background: var(--pastel-lavender);
+    .callout-title { color: #5b21b6; }
+  }
+
+  .callout-title {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--gray);
+  padding: 1.5rem;
+  border-top: 2px dashed var(--lightgray);
+  margin-top: 3rem;
+
+  a {
+    color: var(--secondary);
+  }
+}
+
+/* ── Breadcrumbs ── */
+.breadcrumb-element {
+  font-size: 0.85rem;
+  color: var(--gray);
+
+  &:last-child {
+    color: var(--secondary);
+    font-weight: 600;
+  }
+}
+
+/* ── Mobile tweaks ── */
+@media (max-width: 768px) {
+  article {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+}
