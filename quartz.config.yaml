@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: stats-2
+  baseUrl: "moonejs.github.io/Stats-2-Notes"
   ignorePatterns:
     - private
     - templates
